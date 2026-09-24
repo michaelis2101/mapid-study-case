@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:mapid_study_case/core/usecase.dart';
 import 'package:mapid_study_case/map/domain/entities/feature_entity.dart';
-import 'package:mapid_study_case/map/domain/repositories/map_repositories.dart';
+import 'package:mapid_study_case/map/domain/repositories/map_repository.dart';
 
 class GetMapDataUsecase implements UseCase<List<FeatureEntity>, NoParams> {
   GetMapDataUsecase({required this.repository});

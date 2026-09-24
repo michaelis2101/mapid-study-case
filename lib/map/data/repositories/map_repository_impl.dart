@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:mapid_study_case/map/data/datasource/map_remote_datasource.dart';
 import 'package:mapid_study_case/map/data/mappers/map_mappers.dart';
 import 'package:mapid_study_case/map/domain/entities/feature_entity.dart';
-import 'package:mapid_study_case/map/domain/repositories/map_repositories.dart';
+import 'package:mapid_study_case/map/domain/repositories/map_repository.dart';
 
 class MapRepositoriesImpl implements MapRepository {
   MapRepositoriesImpl({required this.remote});
