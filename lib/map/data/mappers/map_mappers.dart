@@ -35,7 +35,15 @@ class MapMapper {
                 'type': 'Point',
                 'coordinates': [f.longitude, f.latitude],
               },
-              'properties': {'nama': f.nama, 'alamat': f.alamat},
+              'properties': {
+                'nama': f.nama,
+                'alamat': f.alamat,
+                'provinsi': f.provinsi,
+                'kabkot': f.kabkot,
+                'kecamatan': f.kecamatan,
+                'desa': f.desa,
+                'waktu': f.waktu,
+              },
             },
           )
           .toList(),

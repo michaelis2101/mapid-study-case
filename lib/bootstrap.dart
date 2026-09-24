@@ -28,9 +28,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
-  await dotenv.load(
-    // fileName: '../.env',
-  );
+  await dotenv.load();
   await setupLocator(
     apiKey: dotenv.env['API_KEY'] ?? '',
   );
