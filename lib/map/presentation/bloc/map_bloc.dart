@@ -18,6 +18,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     on<_GetLocation>(_onGetLocation);
     on<_GetMapData>(_getMapData);
     on<_SelectLocation>(_selectLocation);
+    on<_DeselectLocation>(_clearSelectedLocation);
   }
   final GetMapDataUsecase _getMapDataUsecase;
   final GetUserLocationUsecase _getUserLocationUsecase;

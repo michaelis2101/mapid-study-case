@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mapid_study_case/counter/counter.dart';
 import 'package:mapid_study_case/l10n/l10n.dart';
+import 'package:mapid_study_case/map/presentation/view/map_view.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -16,7 +17,8 @@ class App extends StatelessWidget {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
+      home: const MapView(),
+      // home: const CounterPage(),
     );
   }
 }

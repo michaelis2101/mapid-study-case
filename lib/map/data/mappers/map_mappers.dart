@@ -21,7 +21,9 @@ class MapMapper {
         .toList();
   }
 
-  Map<String, dynamic> toFeatureCollection(List<FeatureEntity> features) {
+  static Map<String, dynamic> toFeatureCollection(
+    List<FeatureEntity> features,
+  ) {
     return {
       'type': 'FeatureCollection',
       'features': features

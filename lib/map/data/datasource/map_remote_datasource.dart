@@ -9,7 +9,7 @@ abstract class MapRemoteDatasource {
 }
 
 class MapRemoteDatasourceImpl implements MapRemoteDatasource {
-  const MapRemoteDatasourceImpl(this._dio);
+  const MapRemoteDatasourceImpl({required this._dio});
 
   final Dio _dio;
 
