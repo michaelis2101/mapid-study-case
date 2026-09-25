@@ -3,5 +3,9 @@
     "counterAppBarTitle": "Counter",
     "@counterAppBarTitle": {
         "description": "Text shown in the AppBar of the Counter Page"
+    },
+    "myLocation": "My Location",
+    "@myLocation": {
+        "description": "Text shown in the My Location button"
     }
 }

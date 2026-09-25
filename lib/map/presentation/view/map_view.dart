@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mapid_study_case/core/injector.dart';
-import 'package:mapid_study_case/map/data/mappers/map_mappers.dart';
+import 'package:mapid_study_case/l10n/l10n.dart';
 import 'package:mapid_study_case/map/domain/entities/feature_entity.dart';
 import 'package:mapid_study_case/map/presentation/bloc/map_bloc.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
@@ -63,15 +63,15 @@ class _MapViewState extends State<MapView> {
       context: context,
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+        borderRadius: .vertical(top: Radius.circular(16)),
       ),
       builder: (sheetContext) {
         return SafeArea(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(20, 20, 20, 24),
             child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: .min,
+              crossAxisAlignment: .start,
               children: [
                 Text(
                   feature.nama,
@@ -82,7 +82,7 @@ class _MapViewState extends State<MapView> {
                 ...[
                   const SizedBox(height: 8),
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: .start,
                     children: [
                       const Icon(Icons.location_on_outlined, size: 18),
                       const SizedBox(width: 6),
@@ -119,6 +119,7 @@ class _MapViewState extends State<MapView> {
 
   @override
   Widget build(BuildContext context) {
+    final tr = context.l10n;
     return BlocProvider.value(
       value: _mapBloc,
       child: Scaffold(
@@ -126,14 +127,14 @@ class _MapViewState extends State<MapView> {
           bloc: _mapBloc,
           builder: (context, state) {
             return Tooltip(
-              message: 'My Location',
+              message: tr.myLocation,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(8)),
                   ),
                   backgroundColor: Theme.of(context).colorScheme.primary,
-                  padding: const EdgeInsets.symmetric(
+                  padding: const .symmetric(
                     horizontal: 12,
                     vertical: 8,
                   ),
@@ -154,14 +155,14 @@ class _MapViewState extends State<MapView> {
                 },
                 child: Row(
                   spacing: 8,
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisSize: .min,
                   children: [
                     Icon(
                       Icons.my_location,
                       color: Theme.of(context).colorScheme.onPrimary,
                     ),
                     Text(
-                      'My Location',
+                      tr.myLocation,
                       style: TextStyle(
                         fontSize: 12,
                         color: Theme.of(context).colorScheme.onPrimary,
@@ -203,7 +204,7 @@ class _MapViewState extends State<MapView> {
                 (state.status == MapStatus.success && state.features.isEmpty)) {
               return const Center(
                 child: Column(
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisSize: .min,
                   children: [
                     CircularProgressIndicator(),
                     SizedBox(height: 12),
