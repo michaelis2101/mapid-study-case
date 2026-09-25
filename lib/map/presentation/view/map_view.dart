@@ -241,7 +241,8 @@ class _MapViewState extends State<MapView> {
                   await controller.addSource(
                     'pariwisata',
                     GeojsonSourceProperties(
-                      data: MapMapper.toFeatureCollection(state.features),
+                      data: state.rawGeoJson,
+                      // data: MapMapper.toFeatureCollection(state.features),
                     ),
                   );
                   await controller.addLayer(

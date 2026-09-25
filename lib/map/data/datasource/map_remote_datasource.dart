@@ -5,7 +5,7 @@ import 'package:mapid_study_case/map/data/datasource/map_config.dart';
 import 'package:mapid_study_case/map/data/dtos/map_data_dto.dart';
 
 abstract class MapRemoteDatasource {
-  Future<MapDataResponseDto> getMapData();
+  Future<(MapDataResponseDto, Map<String, dynamic>)> getMapData();
 }
 
 class MapRemoteDatasourceImpl implements MapRemoteDatasource {
@@ -14,7 +14,7 @@ class MapRemoteDatasourceImpl implements MapRemoteDatasource {
   final Dio _dio;
 
   @override
-  Future<MapDataResponseDto> getMapData() async {
+  Future<(MapDataResponseDto, Map<String, dynamic>)> getMapData() async {
     // TODO: implement getMapData
     try {
       final response = await _dio.get<Map<String, dynamic>>(
@@ -26,7 +26,7 @@ class MapRemoteDatasourceImpl implements MapRemoteDatasource {
       );
 
       if (response.statusCode == 200) {
-        return MapDataResponseDto.fromJson(response.data!);
+        return (MapDataResponseDto.fromJson(response.data!), response.data!);
       } else {
         throw Exception('Failed to load map data: ${response.statusCode}');
       }

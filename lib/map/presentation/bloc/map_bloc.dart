@@ -74,7 +74,8 @@ class MapBloc extends Bloc<MapEvent, MapState> {
       (features) => emit(
         state.copyWith(
           status: MapStatus.success,
-          features: features,
+          features: features.$1,
+          rawGeoJson: features.$2,
           loadingMessage: null,
         ),
       ),

@@ -363,7 +363,7 @@ String toString() {
 /// @nodoc
 mixin _$MapState {
 
- MapStatus get status; List<FeatureEntity> get features; FeatureEntity? get selectedFeature; Position? get userLocation; String? get errorMessage; String? get loadingMessage;
+ MapStatus get status; List<FeatureEntity> get features; Map<String, dynamic>? get rawGeoJson; FeatureEntity? get selectedFeature; Position? get userLocation; String? get errorMessage; String? get loadingMessage;
 /// Create a copy of MapState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -374,16 +374,16 @@ $MapStateCopyWith<MapState> get copyWith => _$MapStateCopyWithImpl<MapState>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MapState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.features, features)&&(identical(other.selectedFeature, selectedFeature) || other.selectedFeature == selectedFeature)&&(identical(other.userLocation, userLocation) || other.userLocation == userLocation)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.loadingMessage, loadingMessage) || other.loadingMessage == loadingMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MapState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.features, features)&&const DeepCollectionEquality().equals(other.rawGeoJson, rawGeoJson)&&(identical(other.selectedFeature, selectedFeature) || other.selectedFeature == selectedFeature)&&(identical(other.userLocation, userLocation) || other.userLocation == userLocation)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.loadingMessage, loadingMessage) || other.loadingMessage == loadingMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(features),selectedFeature,userLocation,errorMessage,loadingMessage);
+int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(features),const DeepCollectionEquality().hash(rawGeoJson),selectedFeature,userLocation,errorMessage,loadingMessage);
 
 @override
 String toString() {
-  return 'MapState(status: $status, features: $features, selectedFeature: $selectedFeature, userLocation: $userLocation, errorMessage: $errorMessage, loadingMessage: $loadingMessage)';
+  return 'MapState(status: $status, features: $features, rawGeoJson: $rawGeoJson, selectedFeature: $selectedFeature, userLocation: $userLocation, errorMessage: $errorMessage, loadingMessage: $loadingMessage)';
 }
 
 
@@ -394,7 +394,7 @@ abstract mixin class $MapStateCopyWith<$Res>  {
   factory $MapStateCopyWith(MapState value, $Res Function(MapState) _then) = _$MapStateCopyWithImpl;
 @useResult
 $Res call({
- MapStatus status, List<FeatureEntity> features, FeatureEntity? selectedFeature, Position? userLocation, String? errorMessage, String? loadingMessage
+ MapStatus status, List<FeatureEntity> features, Map<String, dynamic>? rawGeoJson, FeatureEntity? selectedFeature, Position? userLocation, String? errorMessage, String? loadingMessage
 });
 
 
@@ -411,11 +411,12 @@ class _$MapStateCopyWithImpl<$Res>
 
 /// Create a copy of MapState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? features = null,Object? selectedFeature = freezed,Object? userLocation = freezed,Object? errorMessage = freezed,Object? loadingMessage = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? features = null,Object? rawGeoJson = freezed,Object? selectedFeature = freezed,Object? userLocation = freezed,Object? errorMessage = freezed,Object? loadingMessage = freezed,}) {
   return _then(_self.copyWith(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as MapStatus,features: null == features ? _self.features : features // ignore: cast_nullable_to_non_nullable
-as List<FeatureEntity>,selectedFeature: freezed == selectedFeature ? _self.selectedFeature : selectedFeature // ignore: cast_nullable_to_non_nullable
+as List<FeatureEntity>,rawGeoJson: freezed == rawGeoJson ? _self.rawGeoJson : rawGeoJson // ignore: cast_nullable_to_non_nullable
+as Map<String, dynamic>?,selectedFeature: freezed == selectedFeature ? _self.selectedFeature : selectedFeature // ignore: cast_nullable_to_non_nullable
 as FeatureEntity?,userLocation: freezed == userLocation ? _self.userLocation : userLocation // ignore: cast_nullable_to_non_nullable
 as Position?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String?,loadingMessage: freezed == loadingMessage ? _self.loadingMessage : loadingMessage // ignore: cast_nullable_to_non_nullable
@@ -513,10 +514,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( MapStatus status,  List<FeatureEntity> features,  FeatureEntity? selectedFeature,  Position? userLocation,  String? errorMessage,  String? loadingMessage)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( MapStatus status,  List<FeatureEntity> features,  Map<String, dynamic>? rawGeoJson,  FeatureEntity? selectedFeature,  Position? userLocation,  String? errorMessage,  String? loadingMessage)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MapState() when $default != null:
-return $default(_that.status,_that.features,_that.selectedFeature,_that.userLocation,_that.errorMessage,_that.loadingMessage);case _:
+return $default(_that.status,_that.features,_that.rawGeoJson,_that.selectedFeature,_that.userLocation,_that.errorMessage,_that.loadingMessage);case _:
   return orElse();
 
 }
@@ -534,10 +535,10 @@ return $default(_that.status,_that.features,_that.selectedFeature,_that.userLoca
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( MapStatus status,  List<FeatureEntity> features,  FeatureEntity? selectedFeature,  Position? userLocation,  String? errorMessage,  String? loadingMessage)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( MapStatus status,  List<FeatureEntity> features,  Map<String, dynamic>? rawGeoJson,  FeatureEntity? selectedFeature,  Position? userLocation,  String? errorMessage,  String? loadingMessage)  $default,) {final _that = this;
 switch (_that) {
 case _MapState():
-return $default(_that.status,_that.features,_that.selectedFeature,_that.userLocation,_that.errorMessage,_that.loadingMessage);}
+return $default(_that.status,_that.features,_that.rawGeoJson,_that.selectedFeature,_that.userLocation,_that.errorMessage,_that.loadingMessage);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -551,10 +552,10 @@ return $default(_that.status,_that.features,_that.selectedFeature,_that.userLoca
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( MapStatus status,  List<FeatureEntity> features,  FeatureEntity? selectedFeature,  Position? userLocation,  String? errorMessage,  String? loadingMessage)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( MapStatus status,  List<FeatureEntity> features,  Map<String, dynamic>? rawGeoJson,  FeatureEntity? selectedFeature,  Position? userLocation,  String? errorMessage,  String? loadingMessage)?  $default,) {final _that = this;
 switch (_that) {
 case _MapState() when $default != null:
-return $default(_that.status,_that.features,_that.selectedFeature,_that.userLocation,_that.errorMessage,_that.loadingMessage);case _:
+return $default(_that.status,_that.features,_that.rawGeoJson,_that.selectedFeature,_that.userLocation,_that.errorMessage,_that.loadingMessage);case _:
   return null;
 
 }
@@ -566,7 +567,7 @@ return $default(_that.status,_that.features,_that.selectedFeature,_that.userLoca
 
 
 class _MapState implements MapState {
-  const _MapState({this.status = MapStatus.initial, final  List<FeatureEntity> features = const [], this.selectedFeature, this.userLocation, this.errorMessage, this.loadingMessage}): _features = features;
+  const _MapState({this.status = MapStatus.initial, final  List<FeatureEntity> features = const [], final  Map<String, dynamic>? rawGeoJson, this.selectedFeature, this.userLocation, this.errorMessage, this.loadingMessage}): _features = features,_rawGeoJson = rawGeoJson;
   
 
 @override@JsonKey() final  MapStatus status;
@@ -575,6 +576,15 @@ class _MapState implements MapState {
   if (_features is EqualUnmodifiableListView) return _features;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_features);
+}
+
+ final  Map<String, dynamic>? _rawGeoJson;
+@override Map<String, dynamic>? get rawGeoJson {
+  final value = _rawGeoJson;
+  if (value == null) return null;
+  if (_rawGeoJson is EqualUnmodifiableMapView) return _rawGeoJson;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableMapView(value);
 }
 
 @override final  FeatureEntity? selectedFeature;
@@ -592,16 +602,16 @@ _$MapStateCopyWith<_MapState> get copyWith => __$MapStateCopyWithImpl<_MapState>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MapState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other._features, _features)&&(identical(other.selectedFeature, selectedFeature) || other.selectedFeature == selectedFeature)&&(identical(other.userLocation, userLocation) || other.userLocation == userLocation)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.loadingMessage, loadingMessage) || other.loadingMessage == loadingMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MapState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other._features, _features)&&const DeepCollectionEquality().equals(other._rawGeoJson, _rawGeoJson)&&(identical(other.selectedFeature, selectedFeature) || other.selectedFeature == selectedFeature)&&(identical(other.userLocation, userLocation) || other.userLocation == userLocation)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.loadingMessage, loadingMessage) || other.loadingMessage == loadingMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_features),selectedFeature,userLocation,errorMessage,loadingMessage);
+int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_features),const DeepCollectionEquality().hash(_rawGeoJson),selectedFeature,userLocation,errorMessage,loadingMessage);
 
 @override
 String toString() {
-  return 'MapState(status: $status, features: $features, selectedFeature: $selectedFeature, userLocation: $userLocation, errorMessage: $errorMessage, loadingMessage: $loadingMessage)';
+  return 'MapState(status: $status, features: $features, rawGeoJson: $rawGeoJson, selectedFeature: $selectedFeature, userLocation: $userLocation, errorMessage: $errorMessage, loadingMessage: $loadingMessage)';
 }
 
 
@@ -612,7 +622,7 @@ abstract mixin class _$MapStateCopyWith<$Res> implements $MapStateCopyWith<$Res>
   factory _$MapStateCopyWith(_MapState value, $Res Function(_MapState) _then) = __$MapStateCopyWithImpl;
 @override @useResult
 $Res call({
- MapStatus status, List<FeatureEntity> features, FeatureEntity? selectedFeature, Position? userLocation, String? errorMessage, String? loadingMessage
+ MapStatus status, List<FeatureEntity> features, Map<String, dynamic>? rawGeoJson, FeatureEntity? selectedFeature, Position? userLocation, String? errorMessage, String? loadingMessage
 });
 
 
@@ -629,11 +639,12 @@ class __$MapStateCopyWithImpl<$Res>
 
 /// Create a copy of MapState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? features = null,Object? selectedFeature = freezed,Object? userLocation = freezed,Object? errorMessage = freezed,Object? loadingMessage = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? features = null,Object? rawGeoJson = freezed,Object? selectedFeature = freezed,Object? userLocation = freezed,Object? errorMessage = freezed,Object? loadingMessage = freezed,}) {
   return _then(_MapState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as MapStatus,features: null == features ? _self._features : features // ignore: cast_nullable_to_non_nullable
-as List<FeatureEntity>,selectedFeature: freezed == selectedFeature ? _self.selectedFeature : selectedFeature // ignore: cast_nullable_to_non_nullable
+as List<FeatureEntity>,rawGeoJson: freezed == rawGeoJson ? _self._rawGeoJson : rawGeoJson // ignore: cast_nullable_to_non_nullable
+as Map<String, dynamic>?,selectedFeature: freezed == selectedFeature ? _self.selectedFeature : selectedFeature // ignore: cast_nullable_to_non_nullable
 as FeatureEntity?,userLocation: freezed == userLocation ? _self.userLocation : userLocation // ignore: cast_nullable_to_non_nullable
 as Position?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String?,loadingMessage: freezed == loadingMessage ? _self.loadingMessage : loadingMessage // ignore: cast_nullable_to_non_nullable

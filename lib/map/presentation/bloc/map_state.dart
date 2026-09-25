@@ -5,6 +5,7 @@ sealed class MapState with _$MapState {
   const factory MapState({
     @Default(MapStatus.initial) MapStatus status,
     @Default([]) List<FeatureEntity> features,
+    Map<String, dynamic>? rawGeoJson,
     FeatureEntity? selectedFeature,
     Position? userLocation,
     String? errorMessage,
